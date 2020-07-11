@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 require("../models/user")
+const requirelogin = require("../middleware/requireLogin")
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs")
 const User = mongoose.model("User");
@@ -42,6 +43,10 @@ router.post("/signup", (req, res) => {
       console.log(err)
   })
 });
+
+router.get("/protected",requirelogin,(req,res)=>{
+  res.send("Hello MY Friend")
+})
 
 router.post("/signin",(req,res)=>{
   const {email,password}=req.body
