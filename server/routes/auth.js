@@ -44,9 +44,7 @@ router.post("/signup", (req, res) => {
   })
 });
 
-router.get("/protected",requirelogin,(req,res)=>{
-  res.send("Hello MY Friend")
-})
+
 
 router.post("/signin",(req,res)=>{
   const {email,password}=req.body
